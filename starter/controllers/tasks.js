@@ -1,6 +1,5 @@
 const Task = require('../models/task.js')
 
-
 const getAllTasks = async (req, res) => {
     try {
         const tasks = await Task.find({})
@@ -18,6 +17,7 @@ const createTask = async (req, res) => {
         return res.status(400).json({ msg: error })
     }
 }
+
 const getTask = async (req, res) => {
     try {
         const task = await Task.findOne({ _id: req.params.id })
@@ -30,6 +30,7 @@ const getTask = async (req, res) => {
         return res.status(400).json({ msg: error })
     }
 }
+
 const updateTask = async (req, res) => {
     try {
         const task = await Task.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
@@ -44,6 +45,7 @@ const updateTask = async (req, res) => {
 
     }
 }
+
 const deleteTask = async (req, res) => {
     try {
         const task = await Task.findOneAndDelete({ _id: req.params.id })
